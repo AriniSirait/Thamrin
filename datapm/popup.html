@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CSS Popup Window</title>
+
+<script type="text/javascript" src="pop.js"></script>	
+<link type="text/css" rel="stylesheet" href="mystyle.css" />
+
+</head>
+
+<body>
+
+<!--css popup window 1-->
+<div style="display: none;" id="blanket"></div>
+<div style="display: none;" id="popUpDiv">
+<a onclick="popup('popUpDiv')" href="#"><img alt="" src="close.jpg" /></a><br />
+<p class="popup">Content goes here. You can add any html you need. Make sure to adjust the css for this div to accomodate for the width/height of this content.</p>
+</div>
+<!--css popup window 1 close-->
+
+<p><a onclick="popup('popUpDiv')" href="#">Click</a></p>
+
+</body>
+</html>
