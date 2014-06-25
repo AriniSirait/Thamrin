@@ -1,9 +1,11 @@
 <?php
 session_start();
 include "../config/configuration.php";
+include "../class/Logging.class.php";
+require_once('../email.php');
 
-	$update_option = $_GET["update_option"];
-
+$update_option = $_GET["update_option"];
+$log = new Logging();
 
 if ($update_option=='edit'){
 	function check_input($value)
@@ -32,14 +34,18 @@ if ($update_option=='edit'){
 			header("Location:../update_bank.php?msg= Semua field harus diisi");
 			
 	} else {
-			$data = mysql_query("UPDATE `data_bank` SET `csn`='$csn', `nama_bank`='$nama_bank', `ma_agreement`='$ma_agreement',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			//$data = mysql_query("UPDATE `data_bank` SET `csn`='$csn', `nama_bank`='$nama_bank', `ma_agreement`='$ma_agreement',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
 			//echo mysql_error($dbConnect);
-			header("Location:../managed_bank.php?msg=Data Bank Berhasil Di-Update");
+			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Bank');
+		    $log->dbwrite('Melakukan Update Bank');
+			header("Location:../managed_bank.php?msg=Data Bank Berhasil Diupdate");
 
 		}
 } else {
 		$id = $_GET["id"];
-		$data = mysql_query("DELETE FROM `data_bank` WHERE `id`='$id'");
+		//$data = mysql_query("DELETE FROM `data_bank` WHERE `id`='$id'");
+		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Bank');
+	    $log->dbwrite('Melakukan Delete Bank');
 		header("Location:../managed_bank.php?msg=Data Bank Berhasil Dihapus");
 	}
 

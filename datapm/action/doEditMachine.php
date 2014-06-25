@@ -1,8 +1,11 @@
 <?php
 session_start();
 include "../config/configuration.php";
+include "../class/Logging.class.php";
+require_once('../email.php');
 
-	$user_option = $_GET["user_option"];
+$user_option = $_GET["user_option"];
+$log = new Logging();
 
 if ($user_option=='edit'){
 	function check_input($value)
@@ -47,17 +50,21 @@ if ($user_option=='edit'){
 			
 		}
 		else{
-			$data = mysql_query("UPDATE `data_atm` SET `customer`='$customer',`csn`='$csn',`terminal_id`='$terminal_id'
-								,`msn`='$msn',`tipe_mesin`='$tipe_mesin',`address`='$address',`city`='$city',`service_area`='$service_area'
-								,`installation_date`='$installation_date',`group`='$group',`ceowner`='$ceowner',`remarks2`='$remarks2'
-								,`status`='$status',`coverage`='$coverage',`start_date`='$start_date',`end_date`='$end_date',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			//$data = mysql_query("UPDATE `data_atm` SET `customer`='$customer',`csn`='$csn',`terminal_id`='$terminal_id'
+			//					,`msn`='$msn',`tipe_mesin`='$tipe_mesin',`address`='$address',`city`='$city',`service_area`='$service_area'
+			//					,`installation_date`='$installation_date',`group`='$group',`ceowner`='$ceowner',`remarks2`='$remarks2'
+			//					,`status`='$status',`coverage`='$coverage',`start_date`='$start_date',`end_date`='$end_date',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Machine');
+		    $log->dbwrite('Melakukan Update Machine');
 			//echo mysql_error($dbConnect);
 			header("Location:../managed_machine.php?msg=Data Machine Berhasil Diupdate");
 
 		}
 } else {
 		$id = $_GET["id"];
-		$data = mysql_query("DELETE FROM `data_atm` WHERE `id`='$id'");
+		//$data = mysql_query("DELETE FROM `data_atm` WHERE `id`='$id'");
+		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Machine');
+	    $log->dbwrite('Melakukan Delete Machine');
 		header("Location:../managed_machine.php?msg=Data Machine Berhasil Dihapus");
 	}
 

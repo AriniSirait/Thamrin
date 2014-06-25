@@ -1,6 +1,8 @@
 <?php
 session_start();
 include "../config/configuration.php";
+include "../class/Logging.class.php";
+require_once('../email.php');
 
 function check_input($value)
 {/*
@@ -43,14 +45,16 @@ if($customer=="" OR $csn=="" OR $terminal_id=="" OR $msn=="" OR $tipe_mesin=="" 
 	
 }
 else{
-	$data = mysql_query("INSERT INTO `data_atm`(`customer`, `csn`,  `terminal_id`, `msn`,  `tipe_mesin`,
-						`address`,  `city`, `service_area`,  `installation_date`, `group`,  `ceowner`
-						, `remarks2`,  `status`, `coverage`,  `start_date`, `end_date`,  `pm_per_year`) VALUES
-										('$customer', '$csn', '$terminal_id', '$msn', '$tipe_mesin', '$address',
-										'$city',  '$service_area',  '$installation_date',  '$group', '$ceowner',
-										'$remarks2',  '$status',  '$coverage',  '$start_date',  '$end_date',  '$pm_per_year')");
-		//echo "berhasil<br>";
-		//echo mysql_error($dbConnect);			
+	//$data = mysql_query("INSERT INTO `data_atm`(`customer`, `csn`,  `terminal_id`, `msn`,  `tipe_mesin`,
+	//					`address`,  `city`, `service_area`,  `installation_date`, `group`,  `ceowner`
+	//					, `remarks2`,  `status`, `coverage`,  `start_date`, `end_date`,  `pm_per_year`) VALUES
+	//									('$customer', '$csn', '$terminal_id', '$msn', '$tipe_mesin', '$address',
+	//									'$city',  '$service_area',  '$installation_date',  '$group', '$ceowner',
+	//									'$remarks2',  '$status',  '$coverage',  '$start_date',  '$end_date',  '$pm_per_year')");
+	//sendEmail('arinihasianna@gmail.com', 'Data Machine telah ditambahkan');
+	$log = new Logging(); 
+    $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah Machine');
+    $log->dbwrite('Melakukan Penambahan Machine');			
 	header("Location:../managed_machine.php?msg=Data Machine berhasil ditambahkan");
 
 }

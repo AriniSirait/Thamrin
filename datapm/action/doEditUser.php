@@ -1,9 +1,11 @@
 <?php
 session_start();
 include "../config/configuration.php";
+include "../class/Logging.class.php";
+require_once('../email.php');
 
-	$user_option = $_GET["user_option"];
-
+$user_option = $_GET["user_option"];
+$log = new Logging();
 
 if ($user_option=='edit'){
 	function check_input($value)
@@ -36,19 +38,20 @@ if ($user_option=='edit'){
 		
 	}
 	else{
-		echo $data = mysql_query("UPDATE `user` SET `username`='$username',`nama_lengkap`='$nama_lengkap',`jabatan`='$jabatan',`cabang`='$cabang',`email`='$email',`telp`='$telp',`role`='$role' WHERE `nik`='$nik'");
-		echo mysql_error($dbConnect);
-		if($data){
+		//$data = mysql_query("UPDATE `user` SET `username`='$username',`nama_lengkap`='$nama_lengkap',`jabatan`='$jabatan',`cabang`='$cabang',`email`='$email',`telp`='$telp',`role`='$role' WHERE `nik`='$nik'");
+		//echo mysql_error($dbConnect);
+		//if($data){
+			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update User');
+		    $log->dbwrite('Melakukan Update User');
 			header("Location:../managed_user.php?msg=Data User Berhasil Di Update");
-		}else{
-			header("Location:../managed_user.php?msg=Data User Gagal Di Update");	
-		}	
-	
-	}
+		//}else{
+		//	header("Location:../managed_user.php?msg=Data User Gagal Di Update");	
+	}	
 } else {
-		
 		$nik = $_GET["nik"];
-		$data = mysql_query("DELETE FROM `user` WHERE `nik`='$nik'");
+		//$data = mysql_query("DELETE FROM `user` WHERE `nik`='$nik'");
+		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete User');
+		$log->dbwrite('Melakukan Delete User');
 		header("Location:../managed_user.php?msg=Data User Berhasil Dihapus");
 	}
 

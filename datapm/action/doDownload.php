@@ -4,6 +4,7 @@ include "../config/configuration.php";
 require_once ('../phpexcel/Classes/PHPExcel.php');
 
 $user_option = $_GET["user_option"];
+$log = new Logging();
 
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
@@ -48,6 +49,8 @@ if ($user_option=='bank'){
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
 	header('Content-type: application/vnd.ms-excel');
 	header('Content-Disposition: attachment; filename="data_bank.xlsx"');
+	$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Download Data Bank');
+	$log->dbwrite('Melakukan Download Data Bank');
 	
 }
 else if($user_option=='user') {
@@ -87,6 +90,8 @@ else if($user_option=='user') {
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
 	header('Content-type: application/vnd.ms-excel');
 	header('Content-Disposition: attachment; filename="user.xlsx"');
+	$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Download Data User');
+	$log->dbwrite('Melakukan Download Data User');
 }
 else if ($user_option=='atm') {
 	// Add some data
@@ -113,6 +118,8 @@ else if ($user_option=='atm') {
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
 	header('Content-type: application/vnd.ms-excel');
 	header('Content-Disposition: attachment; filename="tipe_atm.xlsx"');
+	$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Download Tipe ATM');
+	$log->dbwrite('Melakukan Download Tipe ATM');
 }
 else {
 	// Add some data
@@ -169,6 +176,8 @@ else {
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
 	header('Content-type: application/vnd.ms-excel');
 	header('Content-Disposition: attachment; filename="data_machine.xlsx"');
+	$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Download Data Machine');
+	$log->dbwrite('Melakukan Download Data Machine');
 }
 
 $objWriter->save('php://output');
