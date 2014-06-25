@@ -1,0 +1,35 @@
+    .L30{
+    	-moz-border-radius: 2px/2px;
+    	-webkit-border-radius: 2px 2px;
+    	border-radius: 2px/2px;;
+    	border:solid 4px #f00; 
+    	width:5px;
+    	height:5px;   
+	}
+	
+	.L1430{
+    	-moz-border-radius: 2px/2px;
+    	-webkit-border-radius: 2px 2px;
+    	border-radius: 2px/2px;;
+    	border:solid 4px #FFAA00; 
+    	width:5px;
+    	height:5px;   
+	}
+	
+	.L714{
+    	-moz-border-radius: 2px/2px;
+    	-webkit-border-radius: 2px 2px;
+    	border-radius: 2px/2px;;
+    	border:solid 4px #FAFA50; 
+    	width:5px;
+    	height:5px;   
+	}
+	
+	.L7{
+    	-moz-border-radius: 2px/2px;
+    	-webkit-border-radius: 2px 2px;
+    	border-radius: 2px/2px;;
+    	border:solid 4px #17EC42; 
+    	width:5px;
+    	height:5px;   
+	}
