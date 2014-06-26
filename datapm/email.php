@@ -1,6 +1,6 @@
 <?php
 require_once('phpmailer/PHPMailerAutoload.php');
-function sendEmail($recipientEmail, $Body){
+function sendEmail($recipientEmail, $recipientName, $Body){
 	$mail = new PHPMailer();
 	$mail->IsSMTP(); // telling the class to use SMTP
 	$mail->Host       = "mail.yourdomain.com"; // SMTP server
@@ -17,8 +17,10 @@ function sendEmail($recipientEmail, $Body){
 	$mail->SetFrom(''/*alamat email*/, '' /*nama penerima*/);
 	$mail->AddReplyTo(''/*alamat email*/, '' /*nama penerima*/);
 	$mail->Subject = "[DataPM]";		//untuk tambah subjek
+	$mail->Body = $body;
+	$mail->AddAddress($recipientEmail, $recipientName);
 	if(!$mail->Send()) {
-		$mail->Send()
+		
 	} else {}
 	
 }
