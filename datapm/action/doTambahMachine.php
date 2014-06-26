@@ -45,13 +45,13 @@ if($customer=="" OR $csn=="" OR $terminal_id=="" OR $msn=="" OR $tipe_mesin=="" 
 	
 }
 else{
-	//$data = mysql_query("INSERT INTO `data_atm`(`customer`, `csn`,  `terminal_id`, `msn`,  `tipe_mesin`,
-	//					`address`,  `city`, `service_area`,  `installation_date`, `group`,  `ceowner`
-	//					, `remarks2`,  `status`, `coverage`,  `start_date`, `end_date`,  `pm_per_year`) VALUES
-	//									('$customer', '$csn', '$terminal_id', '$msn', '$tipe_mesin', '$address',
-	//									'$city',  '$service_area',  '$installation_date',  '$group', '$ceowner',
-	//									'$remarks2',  '$status',  '$coverage',  '$start_date',  '$end_date',  '$pm_per_year')");
-	//sendEmail('arinihasianna@gmail.com', 'Data Machine telah ditambahkan');
+	$data = mysql_query("INSERT INTO `data_atm`(`customer`, `csn`,  `terminal_id`, `msn`,  `tipe_mesin`,
+						`address`,  `city`, `service_area`,  `installation_date`, `group`,  `ceowner`
+						, `remarks2`,  `status`, `coverage`,  `start_date`, `end_date`,  `pm_per_year`) VALUES
+						('$customer', '$csn', '$terminal_id', '$msn', '$tipe_mesin', '$address',
+						'$city',  '$service_area',  '$installation_date',  '$group', '$ceowner',
+						'$remarks2',  '$status',  '$coverage',  '$start_date',  '$end_date',  '$pm_per_year')");
+	sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data machine telah ditambahkan');
 	$log = new Logging(); 
     $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah Machine');
     $log->dbwrite('Melakukan Penambahan Machine');			

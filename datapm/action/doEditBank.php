@@ -34,8 +34,9 @@ if ($update_option=='edit'){
 			header("Location:../update_bank.php?msg= Semua field harus diisi");
 			
 	} else {
-			//$data = mysql_query("UPDATE `data_bank` SET `csn`='$csn', `nama_bank`='$nama_bank', `ma_agreement`='$ma_agreement',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			$data = mysql_query("UPDATE `data_bank` SET `csn`='$csn', `nama_bank`='$nama_bank', `ma_agreement`='$ma_agreement',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
 			//echo mysql_error($dbConnect);
+			sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah diupdate');
 			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Bank');
 		    $log->dbwrite('Melakukan Update Bank');
 			header("Location:../managed_bank.php?msg=Data Bank Berhasil Diupdate");
@@ -43,7 +44,8 @@ if ($update_option=='edit'){
 		}
 } else {
 		$id = $_GET["id"];
-		//$data = mysql_query("DELETE FROM `data_bank` WHERE `id`='$id'");
+		$data = mysql_query("DELETE FROM `data_bank` WHERE `id`='$id'");
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah dihapus');
 		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Bank');
 	    $log->dbwrite('Melakukan Delete Bank');
 		header("Location:../managed_bank.php?msg=Data Bank Berhasil Dihapus");

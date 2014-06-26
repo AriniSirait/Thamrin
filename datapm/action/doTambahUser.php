@@ -38,11 +38,11 @@ if($nik=="" OR $username=="" OR $nama_lengkap=="" OR $email=="" OR $telp=="" OR 
 else{
 	if ($password == $cPassword){
 		$md5Password = md5($password);
-		//$data = mysql_query("INSERT INTO `user`(`nik`, `username`,  `nama_lengkap`, `password`, `email`, `jabatan`, `cabang`, `telp`, `role`) VALUES
-		//										('$nik', '$username', '$nama_lengkap','$md5Password', '$email', '$jabatan', '$cabang', '$telp', '$role')");
+		$data = mysql_query("INSERT INTO `user`(`nik`, `username`,  `nama_lengkap`, `password`, `email`, `jabatan`, `cabang`, `telp`, `role`) VALUES
+												('$nik', '$username', '$nama_lengkap','$md5Password', '$email', '$jabatan', '$cabang', '$telp', '$role')");
 		//echo "berhasil<br>";
 		//echo mysql_error($dbConnect);
-		//sendEmail('arinihasianna@gmail.com', 'Data User telah ditambahkan');
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data user telah ditambahkan');
 		$log = new Logging(); 
 	    $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah User');
 	    $log->dbwrite('Melakukan Penambahan User');

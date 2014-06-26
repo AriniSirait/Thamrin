@@ -33,8 +33,9 @@ if ($user_option=='edit'){
 			
 		}
 		else{
-			//$data = mysql_query("UPDATE `atm_type` SET `tipe_atm`='$tipe_atm',`description`='$description' WHERE `id`='$id'");
+			$data = mysql_query("UPDATE `atm_type` SET `tipe_atm`='$tipe_atm',`description`='$description' WHERE `id`='$id'");
 			//echo mysql_error($dbConnect);
+			sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Tipe ATM telah diupdate');
 			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update tipe ATM');
 		    $log->dbwrite('Melakukan Update tipe ATM');
 			header("Location:../managed_atm.php?msg=Data ATM Type Berhasil Diupdate");			 
@@ -43,7 +44,8 @@ if ($user_option=='edit'){
 		}
 } else {
 		$id = $_GET["id"];
-		//$data = mysql_query("DELETE FROM `atm_type` WHERE `id`='$id'");
+		$data = mysql_query("DELETE FROM `atm_type` WHERE `id`='$id'");
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Tipe ATM telah dihapus');
 		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete tipe ATM');
 	    $log->dbwrite('Melakukan Delete tipe ATM');
 		header("Location:../managed_atm.php?msg=Data ATM Type Berhasil Dihapus");

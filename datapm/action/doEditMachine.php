@@ -47,13 +47,13 @@ if ($user_option=='edit'){
 	OR $remarks2=="" OR $status=="" OR $coverage=="" OR $start_date=="" OR $end_date=="" OR $pm_per_year==""){
 			header("Location:../update_machine.php?msg= Semua field harus diisi");
 			//echo mysql_error($dbConnect);
-			
-		}
-		else{
-			//$data = mysql_query("UPDATE `data_atm` SET `customer`='$customer',`csn`='$csn',`terminal_id`='$terminal_id'
-			//					,`msn`='$msn',`tipe_mesin`='$tipe_mesin',`address`='$address',`city`='$city',`service_area`='$service_area'
-			//					,`installation_date`='$installation_date',`group`='$group',`ceowner`='$ceowner',`remarks2`='$remarks2'
-			//					,`status`='$status',`coverage`='$coverage',`start_date`='$start_date',`end_date`='$end_date',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+	}
+	else{
+			$data = mysql_query("UPDATE `data_atm` SET `customer`='$customer',`csn`='$csn',`terminal_id`='$terminal_id'
+								,`msn`='$msn',`tipe_mesin`='$tipe_mesin',`address`='$address',`city`='$city',`service_area`='$service_area'
+								,`installation_date`='$installation_date',`group`='$group',`ceowner`='$ceowner',`remarks2`='$remarks2'
+								,`status`='$status',`coverage`='$coverage',`start_date`='$start_date',`end_date`='$end_date',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data machine telah diupdate');
 			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Machine');
 		    $log->dbwrite('Melakukan Update Machine');
 			//echo mysql_error($dbConnect);
@@ -62,7 +62,8 @@ if ($user_option=='edit'){
 		}
 } else {
 		$id = $_GET["id"];
-		//$data = mysql_query("DELETE FROM `data_atm` WHERE `id`='$id'");
+		$data = mysql_query("DELETE FROM `data_atm` WHERE `id`='$id'");
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data machine telah dihapus');
 		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Machine');
 	    $log->dbwrite('Melakukan Delete Machine');
 		header("Location:../managed_machine.php?msg=Data Machine Berhasil Dihapus");

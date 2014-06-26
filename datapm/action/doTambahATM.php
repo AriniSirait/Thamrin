@@ -28,9 +28,9 @@ if($tipe_atm=="" OR $description==""){
     
 }
 else{
-    //$data = mysql_query("INSERT INTO `atm_type`(`tipe_atm`,  `description`) VALUES
-    //                                   ('$tipe_atm', '$description')");
-    //sendEmail('arinihasianna@gmail.com', 'Tipe ATM telah ditambahkan');
+    $data = mysql_query("INSERT INTO `atm_type`(`tipe_atm`,  `description`) VALUES
+                                       ('$tipe_atm', '$description')");
+    sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Tipe ATM telah ditambahkan');
     $log = new Logging(); 
     $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah tipe ATM');
     $log->dbwrite('Melakukan Penambahan tipe ATM');

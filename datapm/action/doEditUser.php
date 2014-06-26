@@ -38,18 +38,20 @@ if ($user_option=='edit'){
 		
 	}
 	else{
-		//$data = mysql_query("UPDATE `user` SET `username`='$username',`nama_lengkap`='$nama_lengkap',`jabatan`='$jabatan',`cabang`='$cabang',`email`='$email',`telp`='$telp',`role`='$role' WHERE `nik`='$nik'");
+		$data = mysql_query("UPDATE `user` SET `username`='$username',`nama_lengkap`='$nama_lengkap',`jabatan`='$jabatan',`cabang`='$cabang',`email`='$email',`telp`='$telp',`role`='$role' WHERE `nik`='$nik'");
 		//echo mysql_error($dbConnect);
-		//if($data){
+		if($data){
+			sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data User telah diupdate');
 			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update User');
 		    $log->dbwrite('Melakukan Update User');
-			header("Location:../managed_user.php?msg=Data User Berhasil Di Update");
-		//}else{
-		//	header("Location:../managed_user.php?msg=Data User Gagal Di Update");	
+			header("Location:../managed_user.php?msg=Data User Berhasil Diupdate");
+		}else{
+			header("Location:../managed_user.php?msg=Data User Gagal Di Update");	
 	}	
 } else {
 		$nik = $_GET["nik"];
-		//$data = mysql_query("DELETE FROM `user` WHERE `nik`='$nik'");
+		$data = mysql_query("DELETE FROM `user` WHERE `nik`='$nik'");
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data User telah dihapus');
 		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete User');
 		$log->dbwrite('Melakukan Delete User');
 		header("Location:../managed_user.php?msg=Data User Berhasil Dihapus");
