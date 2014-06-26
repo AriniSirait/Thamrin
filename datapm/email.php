@@ -21,7 +21,8 @@ function sendEmail($recipientEmail, $recipientName, $Body){
 	$mail->AddAddress($recipientEmail, $recipientName);
 	if(!$mail->Send()) {
 		
-	} else {}
+	} else {
+	}
 	
 }
 	
