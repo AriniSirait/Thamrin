@@ -1,6 +1,6 @@
 <?php
 require_once('phpmailer/PHPMailerAutoload.php');
-function sendEmail($recipientEmail, $recipientName, $Body){
+function sendEmail($recipientEmail, $recipientName, $body){
 	$mail = new PHPMailer();
 	$mail->IsSMTP(); // telling the class to use SMTP
 	$mail->Host       = "mail.yourdomain.com"; // SMTP server
@@ -20,7 +20,7 @@ function sendEmail($recipientEmail, $recipientName, $Body){
 	$mail->Body = $body;
 	$mail->AddAddress($recipientEmail, $recipientName);
 	if(!$mail->Send()) {
-		
+		//kesalahan pada server, belum tahu bagaimana untuk penanganannya	
 	} else {
 	}
 	
