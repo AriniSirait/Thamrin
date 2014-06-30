@@ -27,7 +27,7 @@
    <link href="css/style.css" rel="stylesheet" />
    <link href="css/style_responsive.css" rel="stylesheet" />
    <link href="css/style_default.css" rel="stylesheet" id="style_color" />
-
+   <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui-1.10.1.custom.min.css"/>
    <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
 </head>
@@ -40,7 +40,7 @@
        <div class="navbar-inner">
            <div class="container-fluid">
                <!-- BEGIN LOGO -->
-               <a class="brand" href="index.html">
+               <a class="brand" href="bank_option.php">
                    <img src="img/logo.png" alt="Admin Lab" />
                </a>
                <!-- END LOGO -->
@@ -108,7 +108,7 @@
                   </ul>
               </li>
 			  
-			  <li class="has-sub">
+			        <li class="has-sub">
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-th"></i></span> Master Data
                         <span class="arrow"></span>
@@ -117,9 +117,15 @@
                         <li><a class="" href="managed_user.php">Manage User</a></li>
                         <li><a class="" href="managed_machine.php">Manage Machine</a></li>
                         <li><a class="" href="managed_bank.php">Manage Bank</a></li>
-						<li><a class="" href="managed_atm.php">Manage ATM Type</a></li>
+						            <li><a class="" href="managed_atm.php">Manage ATM Type</a></li>
                     </ul>
-                </li>
+              </li>
+
+              <li class="has-sub">
+                    <a href="bank_option.php" class="">
+                        <span class="icon-box"><i class="icon-building"></i></span> Bank Option
+                    </a>
+              </li>
              
           </ul>
          <!-- END SIDEBAR MENU -->
