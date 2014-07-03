@@ -3,8 +3,8 @@
 	require('include/header.php');
 ?>
 <title>Details</title>
-</head>
 
+</head>
   <!-- BEGIN PAGE TITLE & BREADCRUMB-->     
   <h3 class="page-title">
      Data PM Detail
@@ -37,7 +37,15 @@
             <a href="javascript:;" class="icon-remove"></a>
           </span>
         </div>
-      <div class="widget-body">	
+      <div class="widget-body">
+        <?php
+                $no = 0;
+                $tt = $row['terminal_id'];
+                  $his = mysql_query("select * from historypm where terminal_id='$tt' ");
+                  while($row = mysql_fetch_array($his)) { 
+                        $no++; 
+                  }
+        ?>	
         <?php if(isset($_REQUEST['msg'])){ ?>
               <div class="valid_box">
                 <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
@@ -52,6 +60,7 @@
               <th >WSID</th>
               <th class="hidden-phone">Location</th>
               <th >Team</th>
+              <!--<th style="display: none">PM per Year</th>-->
               <th class="hidden-phone">Status</th>
               <th class="hidden-phone">Action</th>
             </tr>
@@ -63,26 +72,43 @@
     					die('Could not connect: ' . mysql_error());
     				}
     				//echo 'Connected successfully';
-    				$data = mysql_query("select * from machinelist");
+    				$data = mysql_query("select * from data_atm");
     				while($row = mysql_fetch_array($data)) { 
     			?>   
     			  <tr class="odd gradeX">
       				<td ><?php echo $row['customer']?></td>
-              <td ><?php echo $row['sn']?></td>    
-      				<td class="center hidden-phone"><?php echo $row['wsid']?></td>	
-              <td class="center hidden-phone"><?php echo $row['location']?></td>
-      				<td><?php echo $row['team']?></td>		
+              <td ><?php echo $row['msn']?></td>    
+      				<td class="center hidden-phone"><?php echo $row['terminal_id']?></td>	
+              <td class="center hidden-phone"><?php echo $row['city']?></td>
+              
+      				<td><?php echo $row['team']?></td>	
+              
               <td class="center hidden-phone">
+                <?php
+                $no = 0;
+                $tt = $row['terminal_id'];
+                  $his = mysql_query("select * from historypm where terminal_id='$tt' ");
+                  while($row = mysql_fetch_array($his)) { 
+                        $no++; 
+                ?>
                 <img src="img/star_yes.jpg" width="15px">
-                <img src="img/star_yes.jpg" width="15px">
-                <img src="img/star_no.jpg" width="15px">
+                <?php
+                  }
+                ?>
                 
+                <?php
+                $last = 6 - $no;
+                  while($last > 0) { 
+                        $last--; 
+                ?>
                 <img src="img/star_no.jpg" width="15px">
-                <img src="img/star_no.jpg" width="15px">
-                <img src="img/star_no.jpg" width="15px">
+                <?php
+                  }
+                ?>   
+                
                 
               </td>  															
-      				<td ><span class="label label-success"><a href="updatepm.php">Update Now!</a></span></td>      				
+      				<td ><span class="label label-success"><a href="updatepm.php?terminal_id=<?php echo $row['terminal_id'];?>">Update Now!</a></span></td>      				
             </tr>
     			<?php
     				}
