@@ -41,8 +41,8 @@ Website: http://thevectorlab.net/
           <i class="icon-lock"></i>
       </div>
 	  <?php
-		 if(isset($_REQUEST['error'])){
-		 	echo "<h4>".$_REQUEST['error']."</h4>";
+		 if(isset($_REQUEST['msg'])){
+		 	echo "<h4>".$_REQUEST['msg']."</h4>";
 		 }
 		 ?>
       <div class="control-wrap">

@@ -30,12 +30,18 @@ if($csn=="" OR $nama_bank=="" OR $ma_agreement=="" OR $pm_per_year==""){
 }
 else{
 	$data = mysql_query("INSERT INTO `data_bank`(`csn`, `nama_bank`,  `ma_agreement`, `pm_per_year`) VALUES
-										('$csn', '$nama_bank', '$ma_agreement','$pm_per_year')");
-	sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah ditambahkan');
-	$log = new Logging(); 
-    $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah Bank');
-    $log->dbwrite('Melakukan Penambahan Bank');		
-	header("Location:../managed_bank.php?msg=Data Bank berhasil ditambahkan");
+										('".$csn."', '".$nama_bank."', '".$ma_agreement."','".$pm_per_year."')");
+	if($data){
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah ditambahkan');
+		$log = new Logging(); 
+	    $log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Tambah Bank');
+	    $log->dbwrite('Melakukan Penambahan Bank');		
+		header("Location:../managed_bank.php?msg=Data Bank Berhasil Ditambahkan");
+	} else {			
+		header("Location:../managed_bank.php?msg=Data Bank Gagal Ditambahkan");	
+	}
+
+
 	
 }
 ?>

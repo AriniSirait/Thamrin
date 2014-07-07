@@ -16,7 +16,7 @@
 
 <h3 class="page-title">
     Update ATM Type
-    <small>For editing bank</small>
+    <small>For editing ATM Type</small>
 </h3>
 <ul class="breadcrumb">
     <li>
@@ -66,20 +66,20 @@
 						<div class="control-group">
 	                        <label class="control-label">Tipe ATM</label>
 	                        <div class="controls">
-								<input type="text" name="tipe_atm" placeholder= "<?php echo $hasil['tipe_atm']; ?>" value= "<?php echo $hasil['tipe_atm']; ?>" class="input-medium" />
+								<input type="text" name="tipe_atm" placeholder= "<?php echo $hasil['tipe_atm']; ?>" class="input-medium" />
 								<span class="help-inline">ATM Type</span>
 	                        </div>
 	                    </div>
 						<div class="control-group">
 	                        <label class="control-label">Description</label>
 	                        <div class="controls">
-								<input type="text" name="description" placeholder= "<?php echo $hasil['description']; ?>" value= "<?php echo $hasil['description']; ?>" class="input-medium" />
+								<input type="text" name="description" placeholder= "<?php echo $hasil['description']; ?>" class="input-medium" />
 								<span class="help-inline">Deskripsi tipe ATM</span>
 	                        </div>
 	                    </div>					
 						<div class="form-actions">
 	                        <button type="submit" class="btn blue" name="submit"><i class="icon-ok"></i> Save</button>						
-	                        <button type="reset" class="btn" name="cancel"><i class=" icon-remove"></i> Cancel</button>
+	                        <a href="managed_atm.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
 	                    </div>
 	                    </form>
 				</div>			

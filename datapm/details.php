@@ -38,14 +38,6 @@
           </span>
         </div>
       <div class="widget-body">
-        <?php
-                $no = 0;
-                $tt = $row['terminal_id'];
-                  $his = mysql_query("select * from historypm where terminal_id='$tt' ");
-                  while($row = mysql_fetch_array($his)) { 
-                        $no++; 
-                  }
-        ?>	
         <?php if(isset($_REQUEST['msg'])){ ?>
               <div class="valid_box">
                 <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
@@ -56,59 +48,58 @@
         <thead>
             <tr>
               <th >Customer</th>
-              <th>S/N</th>
+              <th class="hidden-phone">S/N</th>
               <th >WSID</th>
               <th class="hidden-phone">Location</th>
               <th >Team</th>
               <!--<th style="display: none">PM per Year</th>-->
-              <th class="hidden-phone">Status</th>
-              <th class="hidden-phone">Action</th>
+              <th >Status</th>
+              <th >Action</th>
             </tr>
         </thead>				
         <tbody>
-    			<?php
-    				//$link=mysqli_connect("localhost","root","","datapm");
+    			<?php    				
     				if (!$link) {
     					die('Could not connect: ' . mysql_error());
     				}
     				//echo 'Connected successfully';
     				$data = mysql_query("select * from data_atm");
+            $a = '';
     				while($row = mysql_fetch_array($data)) { 
     			?>   
     			  <tr class="odd gradeX">
       				<td ><?php echo $row['customer']?></td>
-              <td ><?php echo $row['msn']?></td>    
-      				<td class="center hidden-phone"><?php echo $row['terminal_id']?></td>	
-              <td class="center hidden-phone"><?php echo $row['city']?></td>
-              
+                    <td class="center hidden-phone"> <a href="subdetails.php?msn=<?php echo $row['msn'];?>"><?php echo $row['msn']; $a=$row['msn'];?></td>    
+      				<td >  <?php echo $row['terminal_id']?> </a> </td>	
+                    <td class="center hidden-phone"><?php echo $row['city']?></td>              
       				<td><?php echo $row['team']?></td>	
               
-              <td class="center hidden-phone">
+              <td >
                 <?php
-                $no = 0;
-                $tt = $row['terminal_id'];
-                  $his = mysql_query("select * from historypm where terminal_id='$tt' ");
-                  while($row = mysql_fetch_array($his)) { 
-                        $no++; 
+                    $bintang = 0;
+                    $tt = $row['terminal_id'];
+                      $his = mysql_query("select * from historypm where terminal_id='$tt' ");
+                      while($row = mysql_fetch_array($his)) { 
+                            $bintang++; 
                 ?>
-                <img src="img/star_yes.jpg" width="15px">
+                    <img src="img/star_yes.jpg" width="15px">
                 <?php
-                  }
+                    }
                 ?>
                 
                 <?php
-                $last = 6 - $no;
-                  while($last > 0) { 
-                        $last--; 
+                    $last = 6 - $bintang;
+                      while($last > 0) { 
+                            $last--; 
                 ?>
-                <img src="img/star_no.jpg" width="15px">
+                    <img src="img/star_no.jpg" width="15px">
                 <?php
-                  }
+                    }
                 ?>   
                 
                 
               </td>  															
-      				<td ><span class="label label-success"><a href="updatepm.php?terminal_id=<?php echo $row['terminal_id'];?>">Update Now!</a></span></td>      				
+      				<td ><span class="label label-success"><a href="updatepm.php?msn=<?php echo $a;?>">Update Now!</a></span></td>      				
             </tr>
     			<?php
     				}

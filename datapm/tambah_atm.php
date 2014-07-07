@@ -49,7 +49,7 @@
 					<div class="control-group">
                         <label class="control-label">ATM Type</label>
                         <div class="controls">
-							<input type="text" name="tipe_atm" placeholder= "CD1" class="input-medium" />
+							<input type="text" name="tipe_atm" placeholder= "" class="input-medium" />
 							<span class="help-inline">ATM Type</span>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                     </div>					
 					<div class="form-actions">
                         <button type="submit" class="btn blue" name="submit"><i class="icon-ok"></i> Save</button>						
-                        <button type="reset" class="btn" name="cancel"><i class=" icon-remove"></i> Cancel</button>
+                        <a href="managed_atm.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
                     </div>
 		         </form>
 		    </div>

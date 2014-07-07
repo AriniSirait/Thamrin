@@ -42,45 +42,23 @@
 				<?php }?>
 				<!-- BEGIN FORM-->
 		        <form action="action/doTambahUser.php" method="post" class="form-horizontal">
-		        	<?php if(isset($_REQUEST['nikErr'])){ ?>
-				  		<div class="control-group error">
-                            <label class="control-label" for="inputError">NIK</label>
-                            <div class="controls">
-                                <input type="text" name="nik" placeholder= "" class="input-medium" />
-                                <span class="help-inline">
-                                	<?php echo  "<h9>"."<center>".$_REQUEST['nikErr']."</center>" ."</h4>"; ?>
-                                </span>
-                            </div>
-                        </div>   	
-					<?php } else {?>
-			        	<div class="control-group"> 
-			            <label class="control-label">NIK</label>
-			            	<div class="controls">
-										<input type="text" name="nik" placeholder= "" class="input-medium" />									
-										<span class="help-inline">NIK dari User</span>									
-			            	</div>
-			        	</div>
-			        <?php } ?>     	
+		        	<div class="control-group"> 
+		            <label class="control-label" for="inputError">NIK</label>
+		            	<div class="controls">
+									<input type="email" name="nik" placeholder= "" class="input-medium" />									
+									<span class="help-inline">NIK dari User</span>
+									
+		            	</div>
+		        	</div>     	
 
 		        	<div class="control-group">
 		            <label class="control-label">Username</label>
 		           		<div class="controls">
 									<input type="text" name="username" placeholder= "" class="input-medium" />
-									<span class="help-inline">Username</span>									
+									<span class="help-inline">Username</span>
 		            	</div>
 		        	</div>              
 
-					<?php if(isset($_REQUEST['nameErr'])){ ?>
-				  		<div class="control-group error">
-                            <label class="control-label" for="inputError">Nama Lengkap</label>
-                            <div class="controls">
-                                <input type="text" name="nama_lengkap" placeholder= "" class="input-medium" />
-                                <span class="help-inline">
-                                	<?php echo  "<h9>"."<center>".$_REQUEST['nameErr']."</center>" ."</h4>"; ?>
-                                </span>
-                            </div>
-                        </div>   	
-					<?php } else {?>
 					<div class="control-group">
 		            <label class="control-label">Nama Lengkap</label>
 		            	<div class="controls">
@@ -89,47 +67,23 @@
 									
 		            	</div>
 		        	</div>
-		        	<?php } ?>
 
-		        	<?php if(isset($_REQUEST['emailErr'])){ ?>
-				  		<div class="control-group error">
-                            <label class="control-label" for="inputError">Email</label>
-                            <div class="controls">
-                                <input type="text" name="nik" placeholder= "" class="input-medium" />
-                                <span class="help-inline">
-                                	<?php echo  "<h9>"."<center>".$_REQUEST['emailErr']."</center>" ."</h4>"; ?>
-                                </span>
-                            </div>
-                        </div>   	
-					<?php } else {?>
 		        	<div class="control-group">
 		            <label class="control-label">Email</label>
 		            	<div class="controls">
-									<input type="text" name="email" placeholder= "" class="input-medium" />
-									<span class="help-inline">Email milik User</span>									
+									<input type="email" name="email" placeholder= "" class="input-medium" />
+									<span class="help-inline">Email milik User</span>
+									
 		            	</div>
 		        	</div>
-		        	<?php } ?>
 
-					<?php if(isset($_REQUEST['telErr'])){ ?>
-				  		<div class="control-group error">
-                            <label class="control-label" for="inputError">Telp</label>
-                            <div class="controls">
-                                <input type="tel" name="telp" placeholder= "xxx-xxxxxxxxx" class="input-medium" />
-                                <span class="help-inline">
-                                	<?php echo  "<h9>"."<center>".$_REQUEST['telErr']."</center>" ."</h4>"; ?>
-                                </span>
-                            </div>
-                        </div>   	
-					<?php } else {?>
 					<div class="control-group">
 		            <label class="control-label">Telp</label>
 		            	<div class="controls">
-									<input type="tel" name="telp" placeholder= "xxx-xxxxxxxxx" class="input-medium" />
+									<input type="tel" pattern="(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9,12}$|[0-9\-\s]{10,20}$)" name="telp" placeholder= "xxx-xxxxxxxxx" class="input-medium" />
 									<span class="help-inline">Nomor telepon milik user</span>
 		            	</div>
 		        	</div>
-		        	<?php } ?>
 
 					<div class="control-group">
 		            <label class="control-label">Password</label>

@@ -17,7 +17,7 @@
 <!-- BEGIN HEAD -->
 <head>
    <meta charset="utf-8" />
-   <!-- <title>Managed Tables</title> -->
+   
    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
    <meta content="" name="description" />
    <meta content="" name="author" />
@@ -27,9 +27,10 @@
    <link href="css/style.css" rel="stylesheet" />
    <link href="css/style_responsive.css" rel="stylesheet" />
    <link href="css/style_default.css" rel="stylesheet" id="style_color" />
-   <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui-1.10.1.custom.min.css"/>
+
    <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
+   <link rel="stylesheet" href="assets/jquery-ui/jquery-ui-1.10.1.custom.css" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -64,7 +65,7 @@
                        <li class="dropdown">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                
-                               <span class="username"><? echo $_SESSION["user"]; ?>aves</span>
+                               <span class="username"><?php echo $_SESSION["user"]; ?></span>
                                <b class="caret"></b>
                            </a>
                            <ul class="dropdown-menu">

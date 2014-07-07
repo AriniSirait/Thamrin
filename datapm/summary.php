@@ -47,7 +47,8 @@
 	    				$startRange = 5;
 	    				$endRange = 12;
 	    				$penyebut = 0; $pembilang = 0;
-	    				$query = "SELECT installation_date, sum(7 - CEIL(EXTRACT(month from installation_date)/2)) AS penyebut FROM `data_atm` WHERE customer = 'BCA' and team = 'Biru' and EXTRACT(month from installation_date) >= ".$startRange." AND EXTRACT(MONTH FROM installation_date) <= ".$endRange;
+	    				$query = "SELECT installation_date, sum(7 - CEIL(EXTRACT(month from installation_date)/2)) AS penyebut FROM `data_atm` WHERE customer = 'BCA' and 
+	    							team = 'Biru' and EXTRACT(month from installation_date) >= ".$startRange." AND EXTRACT(MONTH FROM installation_date) <= ".$endRange;
 	    				$data = mysql_query($query);
 	    				while($row = mysql_fetch_array($data)) { 
 	    					// echo "Penyebut".$row['penyebut'];

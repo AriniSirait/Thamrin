@@ -46,125 +46,204 @@
 					<div class="control-group">
             <label class="control-label">Customer</label>
             <div class="controls">
-							<input type="text" name="customer" placeholder= "Panin" class="input-medium" />
+							<input type="text" name="customer" placeholder= "" class="input-medium" />
 							<span class="help-inline">Customer</span>
             </div>
         	</div>
-					<div class="control-group">
+
+            <?php if(isset($_REQUEST['csnErr'])){ ?>
+                <div class="control-group error">
+                    <label class="control-label" for="inputError">Customer Number</label>
+                    <div class="controls">
+                        <input type="text" name="csn" placeholder= "" class="input-medium" />
+                        <span class="help-inline">
+                            <?php echo  "<h9>"."<center>".$_REQUEST['csnErr']."</center>" ."</h4>"; ?>
+                        </span>
+                    </div>
+                </div>      
+            <?php } else {?>
+			<div class="control-group">
             <label class="control-label">Customer Number</label>
             <div class="controls">
-							<input type="text" name="csn" placeholder= "211736" class="input-medium" />
+							<input type="text" name="csn" placeholder= "" class="input-medium" />
 							<span class="help-inline">Nomor keanggotaan customer</span>
             </div>
         	</div>
+            <?php } ?>
+
         	<div class="control-group">
             <label class="control-label">Terminal ID</label>
             <div class="controls">
-							<input type="text" name="terminal_id" placeholder= "234" class="input-medium" />
+							<input type="text" name="terminal_id" placeholder= "" class="input-medium" />
 							<span class="help-inline">Terminal ID</span>
             </div>
         	</div>
 					<div class="control-group">
             <label class="control-label">Machine Serial Number</label>
             <div class="controls">
-							<input type="text" name="msn" placeholder= "IE04092" class="input-medium" />
+							<input type="text" name="msn" placeholder= "" class="input-medium" />
 							<span class="help-inline">Nomor serial dari mesin ATM</span>
             </div>
         	</div>
         	<div class="control-group">				
         	 <label class="control-label">Tipe Mesin</label>
             <div class="controls">
-							<input type="text" name="tipe_mesin" placeholder= "CD1" class="input-medium" />
+							<input type="text" name="tipe_mesin" placeholder= "" class="input-medium" />
 							<span class="help-inline">Tipe Mesin ATM</span>
             </div>
         	</div>
 					<div class="control-group">
             <label class="control-label">Address</label>
             <div class="controls">
-							<input type="text" name="address" placeholder= "JL. Juanda Bandung" class="input-medium" />
+							<input type="text" name="address" placeholder= "" class="input-medium" />
 							<span class="help-inline">Alamat customer</span>
             </div>
         	</div>
         	<div class="control-group">
             <label class="control-label">City</label>
             <div class="controls">
-							<input type="text" name="city" placeholder= "Bandung" class="input-medium" />
+							<input type="text" name="city" placeholder= "" class="input-medium" />
 							<span class="help-inline">Kota tempat customer berada</span>
             </div>
         	</div>
 					<div class="control-group">
             <label class="control-label">Service Area</label>
             <div class="controls">
-							<input type="text" name="service_area" placeholder= "Bandung" class="input-medium" />
+							<input type="text" name="service_area" placeholder= "" class="input-medium" />
 							<span class="help-inline">Service Area</span>
             </div>
         	</div>
-        	<div class="control-group">
-        	 <label class="control-label">Tanggal Instalasi</label>
+        	
+            <?php if(isset($_REQUEST['sdErr'])){ ?>
+                <div class="control-group error">
+                    <label class="control-label" for="inputError">Tanggal Instalasi</label>
+                    <div class="controls">
+                        <div class="input-append" id="ui_date_picker_trigger">              
+                            <input type="text" class="m-wrap medium" name="start_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                        <span class="help-inline">
+                            <?php echo  "<h9>"."<center>".$_REQUEST['sdErr']."</center>" ."</h4>"; ?>
+                        </span>
+                    </div>
+                </div>      
+            <?php } else {?>
+            <div class="control-group">
+        	<label class="control-label">Tanggal Instalasi</label>
             <div class="controls">
-							<input type="text" name="installation_date" placeholder= "YYYY-MM-DD" class="input-medium" />
+							<div class="input-append" id="ui_date_picker_trigger">              
+                                <input type="text" class="m-wrap medium" name="installation_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
 							<span class="help-inline">Tanggal Instalasi dari mesin ATM</span>
             </div>
         	</div>
-					<div class="control-group">
-            <label class="control-label">Group</label>
+            <?php } ?>
+
+			<div class="control-group">
+            <label class="control-label">Team</label>
             <div class="controls">
-							<input type="text" name="group" placeholder= "Bandung" class="input-medium" />
-							<span class="help-inline">Group ATM</span>
+							<input type="text" name="team" placeholder= "" class="input-medium" />
+							<span class="help-inline">Team ATM</span>
             </div>
         	</div>
         	<div class="control-group">
             <label class="control-label">CE Owner</label>
             <div class="controls">
-							<input type="text" name="ceowner" placeholder= "Eko" class="input-medium" />
+							<input type="text" name="ceowner" placeholder= "" class="input-medium" />
 							<span class="help-inline">CE Owner dari mesin ATM</span>
             </div>
         	</div>
 					<div class="control-group">
             <label class="control-label">Remarks2</label>
             <div class="controls">
-							<input type="text" name="remarks2" placeholder= "FALSE" class="input-medium" />
+							<input type="text" name="remarks2" placeholder= "" class="input-medium" />
 							<span class="help-inline">Remarks2 dari mesin ATM</span>
             </div>
         	</div>	
         	<div class="control-group">
             <label class="control-label">Status</label>
             <div class="controls">
-							<input type="text" name="status" placeholder= "MA" class="input-medium" />
+							<input type="text" name="status" placeholder= "" class="input-medium" />
 							<span class="help-inline">Status mesin ATM</span>
             </div>
         	</div>
         	<div class="control-group">
         	 <label class="control-label">Coverage</label>
             <div class="controls">
-							<input type="text" name="coverage" placeholder= "5x11" class="input-medium" />
+							<input type="text" name="coverage" placeholder= "" class="input-medium" />
 							<span class="help-inline">Coverage dari mesin ATM</span>
             </div>
         	</div>
-					<div class="control-group">
+			
+            <?php if(isset($_REQUEST['sdErr'])){ ?>
+                <div class="control-group error">
+                    <label class="control-label" for="inputError">Start Date</label>
+                    <div class="controls">
+                        <div class="input-append" id="ui_date_picker_trigger">              
+                            <input type="text" class="m-wrap medium" name="start_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                        <span class="help-inline">
+                            <?php echo  "<h9>"."<center>".$_REQUEST['sdErr']."</center>" ."</h4>"; ?>
+                        </span>
+                    </div>
+                </div>      
+            <?php } else {?>
+            <div class="control-group">
             <label class="control-label">Start Date</label>
             <div class="controls">
-							<input type="text" name="start_date" placeholder= "YYYY-MM-DD" class="input-medium" />
+							<div class="input-append" id="ui_date_picker_trigger">              
+                                <input type="text" class="m-wrap medium" name="start_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
 							<span class="help-inline">Tanggal awal PM dari mesin ATM</span>
             </div>
         	</div>
+            <?php } ?>
+
+            <?php if(isset($_REQUEST['edErr'])){ ?>
+                <div class="control-group error">
+                    <label class="control-label" for="inputError">End Date</label>
+                    <div class="controls">
+                        <div class="input-append" id="ui_date_picker_trigger">              
+                            <input type="text" class="m-wrap medium" name="end_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                        <span class="help-inline">
+                            <?php echo  "<h9>"."<center>".$_REQUEST['edErr']."</center>" ."</h4>"; ?>
+                        </span>
+                    </div>
+                </div>      
+            <?php } else {?>
         	<div class="control-group">
             <label class="control-label">End Date</label>
             <div class="controls">
-							<input type="text" name="end_date" placeholder= "YYYY-MM-DD" class="input-medium" />
+							<div class="input-append" id="ui_date_picker_trigger">              
+                                <input type="text" class="m-wrap medium" name="end_date"/><span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
 							<span class="help-inline">Tanggal akhir PM dari mesin ATM</span>
             </div>
         	</div>
-					<div class="control-group">
-            <label class="control-label">PM per year</label>
-            <div class="controls">
-							<input type="text" name="pm_per_year" placeholder= "6" class="input-medium" />
+            <?php } ?>
+			
+            <?php if(isset($_REQUEST['pmErr'])){ ?>
+                <div class="control-group error">
+                    <label class="control-label" for="inputError">PM per year</label>
+                    <div class="controls">
+                        <input type="text" name="pm_per_year" placeholder= "" class="input-medium" />>
+                        <span class="help-inline">
+                            <?php echo  "<h9>"."<center>".$_REQUEST['pmErr']."</center>" ."</h4>"; ?>
+                        </span>
+                    </div>
+                </div>      
+            <?php } else {?>
+            <div class="control-group">
+                <label class="control-label">PM per year</label>
+                <div class="controls">
+							<input type="text" name="pm_per_year" placeholder= "" class="input-medium" />
 							<span class="help-inline">Jumlah PM per year dari mesin ATM</span>
-            </div>
+                </div>
         	</div>
+            <?php } ?>
 					<div class="form-actions">
             <button type="submit" class="btn blue" name="submit"><i class="icon-ok"></i> Save</button>						
-            <button type="reset" class="btn" name="cancel"><i class=" icon-remove"></i> Cancel</button>
+            <a href="managed_machine.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
           </div>
          </form>
     		</div>				
@@ -175,6 +254,19 @@
 <!-- END ADVANCED TABLE widget-->
 </div>
 </div>
+<!-- BEGIN JAVASCRIPTS-->
+    <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+   <script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
+   <script src="js/scripts.js"></script>
+   <script src="js/ui-jqueryui.js"></script>
+    <script>
+          jQuery(document).ready(function() {       
+             // initiate layout and plugins
+             App.init();
+             UIJQueryUI.init();
+          });
+    </script>
+<!--END JAVASCRIPTS-->
 </div>
 </div>
 	

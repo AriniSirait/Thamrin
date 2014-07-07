@@ -24,17 +24,24 @@ $customer = check_input($_POST['customer']);
 $terminal_id = check_input($_POST['terminal_id']);
 $msn = check_input($_POST['msn']);
 $date = check_input($_POST['date']);
+$your_date = date("Y-m-d", strtotime($date));
 $eng = check_input($_POST['eng']);
 
-	if ($customer=="" OR $terminal_id=="" OR $wsid=="" OR $date=="" OR $eng=="") {
-		header("Location:../updatepm.php?msg= Semua field harus diisi&wsid=$wsid");
+if ($customer=="" OR $terminal_id=="" OR $msn=="" OR $date=="" OR $eng=="") {
+	header("Location:../updatepm.php?msg= Semua field harus diisi&msn=$msn");
+}
+else{
+	$data = mysql_query("INSERT INTO `historypm`(`terminal_id`, `date`,  `eng`, `msn`) VALUES
+											('".$terminal_id."', '".$your_date."', '".$eng."', '".$msn."')");
+	if($data){
+		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data PM telah diupdate');
+		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update PM');
+		$log->dbwrite('Melakukan Update PM');
+		header("Location:../details.php?msg=Data PM Berhasil Diupdate");
+	} else {			
+		header("Location:../details.php?msg=Data PM Gagal Diupdate");	
 	}
-	else{
-		$data = mysql_query("INSERT INTO `historypm`(`terminal_id`, `date`,  `eng`) VALUES
-												('$terminal_id', '$date', '$eng')");
-		//sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data PM telah diupdate');
-		//$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update PM');
-		//$log->dbwrite('Melakukan Update PM');
-	}
+
+}
 
 ?>

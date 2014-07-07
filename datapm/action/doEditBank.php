@@ -5,6 +5,8 @@ include "../class/Logging.class.php";
 require_once('../email.php');
 
 $update_option = $_GET["update_option"];
+$id = $_GET["id"];
+
 $log = new Logging();
 
 if ($update_option=='edit'){
@@ -31,24 +33,36 @@ if ($update_option=='edit'){
 
 
 	if($csn=="" OR $nama_bank=="" OR $ma_agreement=="" OR $pm_per_year==""){
-			header("Location:../update_bank.php?msg= Semua field harus diisi");
+			header("Location:../update_bank.php?msg= Semua field harus diisi&user_option=edit&id=$id");
 			
 	} else {
-			$data = mysql_query("UPDATE `data_bank` SET `csn`='$csn', `nama_bank`='$nama_bank', `ma_agreement`='$ma_agreement',`pm_per_year`='$pm_per_year' WHERE `id`='$id'");
+			$data = mysql_query("UPDATE `data_bank` SET `csn`='".$csn."', `nama_bank`='".$nama_bank."', `ma_agreement`='".$ma_agreement."',`pm_per_year`='".$pm_per_year."' WHERE `id`='$id'");
+			if($data){
+				sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah diupdate');
+				$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Bank');
+			    $log->dbwrite('Melakukan Update Bank');
+				header("Location:../managed_bank.php?msg=Data Bank Berhasil Diupdate");
+			} else {			
+				header("Location:../managed_bank.php?msg=Data Bank Gagal Diupdate");	
+			}
+
 			//echo mysql_error($dbConnect);
-			sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah diupdate');
-			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Update Bank');
-		    $log->dbwrite('Melakukan Update Bank');
-			header("Location:../managed_bank.php?msg=Data Bank Berhasil Diupdate");
+			
 
 		}
 } else {
 		$id = $_GET["id"];
 		$data = mysql_query("DELETE FROM `data_bank` WHERE `id`='$id'");
-		sendEmail(''/*isi dengan alamat email tujuan*/, ''/*isi dengan nama penerima email tujuan*/, 'Data bank telah dihapus');
-		$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Bank');
-	    $log->dbwrite('Melakukan Delete Bank');
-		header("Location:../managed_bank.php?msg=Data Bank Berhasil Dihapus");
-	}
+		if($data){
+			sendEmail('arinihasianna@gmail.com'/*isi dengan alamat email tujuan*/, 'arini hasianna'/*isi dengan nama penerima email tujuan*/, 'Data bank telah dihapus');
+			$log->lwrite($_SESSION['nik'].' - '.$_SESSION['user'].' -> Delete Bank');
+		    $log->dbwrite('Melakukan Delete Bank');
+			header("Location:../managed_bank.php?msg=Data Bank Berhasil Dihapus");
+		} else {			
+			header("Location:../managed_bank.php?msg=Data Bank Gagal Dihapus");	
+		}
+
+		
+}
 
 ?>

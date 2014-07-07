@@ -41,8 +41,21 @@
                               <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
                             </div>
                           <?php }?>							
-            							<a href="tambah_atm.php">Add New ATM Type</a>
-            							<br />
+            							<div class="clearfix">
+                                <div class="btn-group">
+                                    <a href="tambah_atm.php"> <button id="sample_editable_1_new" class="btn green">
+                                        Add New ATM <i class="icon-plus"></i>
+                                    </button> </a>
+                                </div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">                                        
+                                        <li><a href="action/doDownload.php?user_option=atm">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space15"></div>
                             <table class="table table-striped table-bordered" id="sample_1">
                             <thead>
                               <tr>
@@ -77,8 +90,7 @@
 								?>
                                 
                                 </tbody>
-                        </table>
-                        <a href="action/doDownload.php?user_option=atm">DOWNLOAD</a>
+                        </table>                        
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->

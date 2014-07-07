@@ -1,0 +1,12 @@
+03:35:21 (doTambahUser) admin@atm.com - Administrator -> Tambah User
+05:02:40 (doEditMachine) admin@atm.com - Administrator -> Update Machine
+05:05:49 (doLogin) rk1@atm.com - Reader Khusus-1 -> Login Ke System
+05:55:23 (doChangePassword) rk1@atm.com - Reader Khusus-1 -> Merubah Password Sendiri
+06:02:22 (doChangePassword) rk1@atm.com - Reader Khusus-1 -> Merubah Password Sendiri
+06:02:58 (doLogin) rk1@atm.com - Reader Khusus-1 -> Login Ke System
+06:06:44 (doChangePassword) opo@atm.com - opo -> Merubah Password Sendiri
+06:08:12 (doLogin) opo@atm.com - opo -> Login Ke System
+06:16:43 (doLogin) opo@atm.com - opo -> Login Ke System
+10:12:14 (doTambahUser) opo@atm.com - opo -> Tambah User
+10:34:25 (doEditUser) opo@atm.com - opo -> Update User
+11:37:08 (doTambahMachine) opo@atm.com - opo -> Tambah Machine

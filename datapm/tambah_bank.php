@@ -22,13 +22,7 @@
         <a href="#">Add Bank</a> <span class="divider-last">&nbsp;</span>
     </li>
 	
-</ul>
-
-	<?php if(isset($_REQUEST['msg'])){ ?>
-  	 <div class="valid_box">
-        <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
-     </div>
-	<?php }?>
+</ul>	
 <!-- END PAGE TITLE & BREADCRUMB-->
 
 <!-- BEGIN ADVANCED TABLE widget-->
@@ -44,7 +38,12 @@
                     </span>
             </div>
             <div class="widget-body">
-			<!-- BEGIN FORM-->			
+			<!-- BEGIN FORM-->	
+                <?php if(isset($_REQUEST['msg'])){ ?>
+                    <div class="valid_box">
+                        <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
+                    </div>
+                <?php }?>
 		        <form action="action/doTambahBank.php" method="post" class="form-horizontal">
 					<div class="control-group">
                         <label class="control-label">CSN</label>
@@ -76,7 +75,7 @@
                     </div>
 					<div class="form-actions">
                         <button type="submit" class="btn blue" name="submit"><i class="icon-ok"></i> Save</button>						
-                        <button type="reset" class="btn" name="cancel"><i class=" icon-remove"></i> Cancel</button>
+                        <a href="managed_bank.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
                     </div>
 		         </form>
 		    </div>

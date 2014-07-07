@@ -6,7 +6,7 @@
 </head>
 
 <?php
-      $terminal_id = $_GET["terminal_id"];
+      $msn = $_GET["msn"];
 ?>
 
 <!-- BEGIN PAGE TITLE & BREADCRUMB-->      
@@ -28,7 +28,7 @@
   </div>
 
 <?php
-    $data = mysql_query("select * from data_atm where terminal_id='$terminal_id' ");    
+    $data = mysql_query("select * from data_atm where msn='$msn' ");    
     $hasil = mysql_fetch_array($data);
 ?>
 <!-- END PAGE HEADER-->
@@ -92,44 +92,44 @@
 
           <div class="form-actions">
             <button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
-            <button type="reset" class="btn"><i class=" icon-remove"></i> Cancel</button>
+              <a href="details.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
           </div>
-
+          
           <div>
-                     <div class="widget-title">
-                        <h4>History</h4>
-                     </div>
-                     <div class="widget-body">
-                        <table class="table table-striped table-bordered" id="sample_1">
-                           <thead>
-                              <tr>
-                                 <th>No</th>
-                                 <th>Engineer</th>
-                                 <th>Date PM</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                             <?php
-                                if (!$link) {
-                                    die('Could not connect: ' . mysql_error());
-                                }                            
-                                 $no = 0;
-                                 $his = mysql_query("select * from historypm where terminal_id='$terminal_id' ");
-                                 while($row = mysql_fetch_array($his)) { 
-                                 $no++; 
-                             ?>   
-                            <tr class="odd gradeX">
-                                <td ><?php echo $no?></td>
-                                <td ><?php echo $row['eng']?></td>    
-                                <td ><?php echo $row['date']?></td>   
-                            </tr>
-                            <?php
-                                }
-                                mysql_close();
-                            ?>
-                           </tbody>
-                        </table>
-                     </div>
+             <div class="widget-title">
+                <h4>History</h4>
+             </div>
+             <div class="widget-body">
+                <table class="table table-striped table-bordered" id="sample_1">
+                   <thead>
+                      <tr>
+                         <th>No</th>
+                         <th>Engineer</th>
+                         <th>Date PM</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                     <?php
+                        if (!$link) {
+                            die('Could not connect: ' . mysql_error());
+                        }                            
+                         $no = 0;
+                         $his = mysql_query("select * from historypm where msn='$msn' ");
+                         while($row = mysql_fetch_array($his)) { 
+                         $no++; 
+                     ?>   
+                    <tr class="odd gradeX">
+                        <td ><?php echo $no ?></td>
+                        <td ><?php echo $row['eng'] ?></td>    
+                        <td ><?php echo $row['date'] ?></td>   
+                    </tr>
+                    <?php
+                        }
+                        mysql_close();
+                    ?>
+                   </tbody>
+                </table>
+             </div>
         </form>
         <!-- END FORM-->
       </div>
@@ -158,7 +158,8 @@
       <!-- END PAGE -->  
    </div>
    <!-- END CONTAINER -->
-
+</div>
+</div>
    <!-- BEGIN FOOTER -->
  <?php 
     require('include/footer.php');

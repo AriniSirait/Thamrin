@@ -43,12 +43,24 @@
                 <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
               </div>
         <?php }?>	
-      	<a href="tambah_bank.php">Add New Bank</a>
-      	<br />
+      	<div class="clearfix">
+            <!-- <div class="btn-group">
+                <a href="tambah_bank.php"> <button id="sample_editable_1_new" class="btn green">
+                    Add New Bank <i class="icon-plus"></i>
+                </button> </a>
+            </div> -->
+            <div class="btn-group pull-right">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right">                                        
+                    <li><a href="action/doDownload.php?user_option=bank">Export to Excel</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="space15"></div>
         <table class="table table-striped table-bordered" id="sample_1">
         <thead>
-            <tr>
-      				<th class="hidden-phone">ID</th>
+            <tr>      				
         			<th>Nama Bank</th>
         			<th class="hidden-phone">Customer Serial Number</th>
         			<th class="hidden-phone">MA Agreement</th>									
@@ -63,15 +75,24 @@
     					die('Could not connect: ' . mysql_error());
     				}
     				//echo 'Connected successfully';
-    				$data = mysql_query("select * from data_bank");
+
+    				$data = mysql_query("select distinct customer, csn, pm_per_year from data_atm where csn != '' ");
     				while($row = mysql_fetch_array($data)) { 
+                
     			?>   
-    			  <tr class="odd gradeX">
-      				<td class="center hidden-phone"><?php echo $row['id']?></td>
-              <td ><?php echo $row['nama_bank']?></td>    
+    			  <tr class="odd gradeX">      				
+              <td ><?php echo $row['customer']?></td>    
       				<td class="center hidden-phone"><?php echo $row['csn']?></td>	
-              <td class="center hidden-phone"><?php echo $row['ma_agreement']?></td>
-      				<td><?php echo $row['pm_per_year']?></td>																	
+              <td class="center hidden-phone"><?php echo $row['pm_per_year']?></td>   
+                <?php
+                  $data1 = mysql_query("select distinct tipe_mesin, coverage  from data_atm where customer = '".$row['customer']."'");
+                  $ma='';
+                  while($row1 = mysql_fetch_array($data1)) { 
+                  $ma.=$row1['tipe_mesin'].":".$row1['coverage']."<br>";
+                  }
+                ?>
+              <td class="center hidden-phone"><?php echo $ma ?></td>  
+                																			
       				<td><span class="label label-success"><a href="update_bank.php?user_option=edit&id=<?php echo $row['id'];?>">Edit</a></span>
       				|
       				<a href="#" onclick="confirmation('<?php echo $row['id'];?>')"> <span class="label label-warning" >Delete</a></span></td>												
@@ -82,8 +103,7 @@
     			?>
                       
         </tbody>
-        </table>
-        <a href="action/doDownload.php?user_option=bank">DOWNLOAD</a>
+        </table>       
       </div>
     </div>
     <!-- END EXAMPLE TABLE widget-->

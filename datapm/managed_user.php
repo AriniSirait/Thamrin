@@ -42,26 +42,33 @@
 						        <?php echo  "<h4>"."<center>".$_REQUEST['msg']."</center>" ."</h4>"; ?>
 						    </div>
 							<?php }?>
-							<a href="tambah_user.php">Add New User</a>
-							<br />
+							<div class="clearfix">
+                                <div class="btn-group">
+                                    <a href="tambah_user.php"> <button id="sample_editable_1_new" class="btn green">
+                                        Add New User <i class="icon-plus"></i>
+                                    </button> </a>
+                                </div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">                                        
+                                        <li><a href="action/doDownload.php?user_option=user">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space15"></div>
                             <table class="table table-striped table-bordered" id="sample_1">
 								<thead>
 									<tr>
 										<th>NIK</th>
 										<th>Username</th>
-										<th class="hidden-phone">Nama Lengkap</th>
-										<th class="hidden-phone">Jabatan</th>
-										<th class="hidden-phone">Cabang</th>
+										<th class="hidden-phone">Nama Lengkap</th>										
 										<th class="hidden-phone">Email</th>
-										<th class="hidden-phone">Telp</th>
-										<th class="hidden-phone">Role</th>									
+										<th class="hidden-phone">Telp</th>																			
 										<th>Action</th>
 																			
 									</tr>
-								</thead>
-								
-								
-								
+								</thead>								
 								<tbody>
 								<?php									
 									if (!$link) {
@@ -75,12 +82,9 @@
 									<tr class="odd gradeX">
 										<td><?php echo $row['nik']?></td>
 										<td><?php echo $row['username']?></td>                                    
-										<td class="center hidden-phone"><?php echo $row['nama_lengkap']?></td>
-										<td class="center hidden-phone"><?php echo $row['jabatan']?></td>
-										<td class="center hidden-phone"><?php echo $row['cabang']?></td>
+										<td class="center hidden-phone"><?php echo $row['nama_lengkap']?></td>										
 										<td class="center hidden-phone"><?php echo $row['email']?></td>
-										<td class="center hidden-phone"><?php echo $row['telp']?></td>
-										<td class="center hidden-phone"><?php echo $row['role']?></td>
+										<td class="center hidden-phone"><?php echo $row['telp']?></td>										
 										<td><span class="label label-success"><a href="update_user.php?user_option=edit&nik=<?php echo $row['nik'];?>">Edit</a></span>
 										|
 										<a href="#" onclick="confirmation('<?php echo $row['nik'];?>')"> <span class="label label-warning"  >Delete</a></span></td>
@@ -91,8 +95,7 @@
 										mysql_close();
 									?>                        
                                 </tbody>
-							</table>
-							<a href="action/doDownload.php?user_option=user">DOWNLOAD</a>
+							</table>							
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE widget-->
@@ -112,7 +115,7 @@
 		function confirmation(nik) {
 		var answer = confirm("Do you want to delete this user?")
 		if (answer){			
-			document.location= "action/doEditUser.php?nik="+nik;
+			document.location= "action/doEditUser.php?user_option=delete&nik="+nik;
 			alert("The user is deleted");
 		}
 		else{

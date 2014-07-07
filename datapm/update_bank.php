@@ -67,34 +67,34 @@
 							<div class="control-group">
                 <label class="control-label">Customer Serial Number</label>
                 <div class="controls">
-									<input type="text" name="csn" placeholder= "<?php echo $hasil['csn']; ?>" value= "<?php echo $hasil['csn']; ?>" class="input-medium" />
+									<input type="text" name="csn" placeholder= "<?php echo $hasil['csn']; ?>" class="input-medium" />
 									<span class="help-inline">CSN dari bank</span>
                 </div>
             	</div>
 							<div class="control-group">
                 <label class="control-label">Nama Bank</label>
                 <div class="controls">
-									<input type="text" name="nama_bank" placeholder= "<?php echo $hasil['nama_bank']; ?>" value= "<?php echo $hasil['nama_bank']; ?>" class="input-medium" />
+									<input type="text" name="nama_bank" placeholder= "<?php echo $hasil['nama_bank']; ?>" class="input-medium" />
 									<span class="help-inline">Nama Bank</span>
                 </div>
             	</div>
 					<div class="control-group">
                         <label class="control-label">MA Agreement</label>
                         <div class="controls">
-							<input type="text" name="ma_agreement" placeholder="<?php echo $hasil['ma_agreement']; ?>" value= "<?php echo $hasil['ma_agreement']; ?>" class="input-medium" />
+							<input type="text" name="ma_agreement" placeholder="<?php echo $hasil['ma_agreement']; ?>" class="input-medium" />
 							<span class="help-inline">MA Agreement antara IBM dan Bank terkait</span>
                         </div>
                     </div>
 					<div class="control-group">
                         <label class="control-label">PM per Year</label>
                         <div class="controls">
-							<input type="text" name="pm_per_year" placeholder="<?php echo $hasil['pm_per_year']; ?>" value= "<?php echo $hasil['pm_per_year']; ?>" class="input-medium" />
+							<input type="text" name="pm_per_year" placeholder="<?php echo $hasil['pm_per_year']; ?>" class="input-medium" />
 							<span class="help-inline">PM per Tahun yang dilakukan untuk tiap mesin</span>
                         </div>
                     </div>					
 					<div class="form-actions">
                         <button type="submit" class="btn blue" name="submit"><i class="icon-ok"></i> Save</button>						
-                        <button type="reset" class="btn" name="cancel"><i class=" icon-remove"></i> Cancel</button>
+                        <a href="managed_bank.php"> <button type="button" class="btn" name="cancel"> <i class=" icon-remove"></i> Cancel </button> </a>
                     </div>
 			</div>			
 		</div>

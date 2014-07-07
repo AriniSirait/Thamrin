@@ -1,0 +1,14 @@
+04:10:15 (doEditUser) admin@atm.com - Administrator -> Delete User
+04:36:45 (doEditUser) admin@atm.com - Administrator -> Delete User
+05:48:07 (doTambahUser) admin@atm.com - Administrator -> Tambah User
+05:48:59 (doEditUser) admin@atm.com - Administrator -> Update User
+06:38:28 (doTambahUser) admin@atm.com - Administrator -> Tambah User
+06:38:52 (doEditUser) admin@atm.com - Administrator -> Delete User
+06:45:52 (doEditMachine) admin@atm.com - Administrator -> Update Machine
+06:55:49 (doLogin) admin@atm.com - Administrator -> Login Ke System
+15:25:29 (doTambahBank) admin@atm.com - Administrator -> Tambah Bank
+16:20:45 (doEditBank) admin@atm.com - Administrator -> Update Bank
+16:26:34 (doEditBank) admin@atm.com - Administrator -> Delete Bank
+16:27:50 (doEditATM) admin@atm.com - Administrator -> Update tipe ATM
+16:29:06 (doEditATM) admin@atm.com - Administrator -> Delete tipe ATM
+16:49:05 (doEditUser) admin@atm.com - Administrator -> Delete User
